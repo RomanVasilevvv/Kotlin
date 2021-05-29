@@ -1,3 +1,5 @@
+import java.lang.Math.sqrt
+
 /*fun main(args:Array<String>)
 {
     println("Hello ${args[0]} ")
@@ -233,7 +235,72 @@ fun treangle():Int {
     }
     return num
 }
+//10,53
+fun pandigit(num:Int):Boolean {//123
+    var n = num
+    while (n>10)
+    {
+        if (n%10>(n/10)%10)
+            n/=10
+        else return false
+    }
+    return true
+}
+fun sumProizveden ():Int {
+    var num = 999
+    var sum: Int = 0
+    while (num.toString().length * 2 + 1 <= 9) {
+        var d = 1
+        while (d <= sqrt(num.toDouble())) {
+            if (num % d == 0) {
+                var n: String = num.toString() + d.toString() + (num / d).toString()
+                if (n.length == 9) {
+                    var ar = n.toCharArray().sorted().joinToString("")
+                    if (ar[0] != '0' && pandigit(ar.toInt())) {
+                        sum += num
+                        break
+                    }
+                }
+            }
+            d++
+        }
+        num++
+    }
+    return sum
+}
+//10.53
+fun check23456(num:Int):Boolean {
+    var n2 = (num * 2).toString().toCharArray().sorted().joinToString("")
+    var n3 = (num * 3).toString().toCharArray().sorted().joinToString("")
+    var n4 = (num * 4).toString().toCharArray().sorted().joinToString("")
+    var n5 = (num * 5).toString().toCharArray().sorted().joinToString("")
+    var n6 = (num * 6).toString().toCharArray().sorted().joinToString("")
+    var a = 0
+    while (a < 10 && n2.isNotEmpty() && n3.isNotEmpty() && n4.isNotEmpty() && n5.isNotEmpty() && n6.isNotEmpty()) {
+        if (n2[0].toString() == a.toString() && n3[0].toString() == a.toString() && n4[0].toString() == a.toString() && n5[0].toString() == a.toString() && n6[0].toString() == a.toString()) {
+            n2 = n2.substringAfterLast(a.toString())
+            n3 = n3.substringAfterLast(a.toString())
+            n4 = n4.substringAfterLast(a.toString())
+            n5 = n5.substringAfterLast(a.toString())
+            n6 = n6.substringAfterLast(a.toString())
+            a++
+        } else if (n2[0].toString() != a.toString() && n3[0].toString() != a.toString() && n4[0].toString() != a.toString() && n5[0].toString() != a.toString() && n6[0].toString() != a.toString())
+            a++
+        else return false
+    }
+    return true
+}
+fun minKrat():Int {
+    var num = 1
+    while (!check23456(num)) {
+        num++
+    }
+    return num
+}
+
 fun main(args: Array<String>)
 {
-    println(treangle())
+    //println(treangle())
+    //println(sumProizveden())
+    //println(minKrat())
 }
