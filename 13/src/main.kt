@@ -43,7 +43,7 @@ println("Некорректный ввод")
 }*/
 //задание 7. минимум, максимум, произв
 // сумма цифр числа
-fun sumOfNumber(number: Int, sum: Int = 0) : Int
+/*fun sumOfNumber(number: Int, sum: Int = 0) : Int
         = if (number == 0)
     sum
 else
@@ -86,7 +86,26 @@ fun main(args: Array<String>)
     {
         println("Некорректный ввод")
     }
-}
+}*/
+//задание 8.1
 
+// НОД двух чисел
+/*fun nodTwoNumbers(number1: Int, number2: Int, nod: Int = (if (number1 > number2) number2 else number1)) : Int =
+    when
+    {
+        (number1 == 0 || number2 == 0) -> -1
+        (number1 % nod == 0 && number2 % nod == 0) -> nod
+        else -> nodTwoNumbers(number1, number2, nod - 1)
+    }
+fun kolvoprost(number: Int, current: Int = 1, count: Int = 0) :Int =
+    when
+    {
+        number == current -> count
+     nodTwoNumbers(number,current)==1 -> kolvoprost(number,current+1,count+1)
+     else -> kolvoprost(number, current+1, count)
+    }
+fun main()
+{
+   println( kolvoprost(10))
 
-
+}*/
