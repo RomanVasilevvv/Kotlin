@@ -109,3 +109,25 @@ fun main()
    println( kolvoprost(10))
 
 }*/
+// задания 8.2
+fun sumOfNumber(number: Int, sum: Int = 0) : Int
+        = if (number == 0)
+    sum
+else
+{
+    val digit = number % 10
+
+    sumOfNumber(number / 10, if (digit%3==0) sum + digit else sum)
+}
+
+fun main(args: Array<String>) {
+
+    print("Number -> ")
+    try {
+        val number = readLine()?.toInt() ?: 0
+        println("Сумма цифр числа $number равна ${sumOfNumber(number)}")
+    } catch (ex: NumberFormatException) {
+        println("Некорректный ввод")
+    }
+}
+
